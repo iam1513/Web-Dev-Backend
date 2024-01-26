@@ -33,3 +33,15 @@ select * from second WHERE GENDER = "Male"; ---> Now only table with Gender "Mal
 select * from second WHERE dob = "2000-01-01"; ---> Specific DoB data
 
 select * from second WHERE dob > "2000-01-01" and Gender ="Female"; ---> Can put multiple conditions at a time
+
+select * from second where name like "%i"; ---> Will get Data in which name ends with i
+
+select * from second where name like "P%"; ---> Will get name that starts with P
+
+select * from second where NOT gender = "Male"; ---> Usage of NOT
+
+select * from second order by <column_name> ---> if col is name, it will be alphabetically sorted
+
+select * from second order by DoB Limit 1; ---> Limit will give the limited elements
+
+select * from second order by DoB DESC; ---> order will be youngest to oldest
