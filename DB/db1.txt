@@ -26,4 +26,10 @@ SELECT * FROM <database_name>; ---> Will give us all columns and their resp valu
 
 CREATE TABLE second (NAME VARCHAR(15) NOT NULL ,DoB DATE DEFAULT "2000-01-01", Gender ENUM("Male" , "Female" ,"Other")); ---> More advanced creation of TABLE 
 
- INSERT INTO SECOND(Name,DoB,Gender) VALUES("Rahul","2003-02-18","Male"),("Prachi","2006-11-16","Female"),("Max",DEFAULT,"Other"); ---> To insert Multiple at a time
+INSERT INTO SECOND(Name,DoB,Gender) VALUES("Rahul","2003-02-18","Male"),("Prachi","2006-11-16","Female"),("Max",DEFAULT,"Other"); ---> To insert Multiple at a time
+
+select * from second WHERE {Condition...}"
+select * from second WHERE GENDER = "Male"; ---> Now only table with Gender "Male" will be given
+select * from second WHERE dob = "2000-01-01"; ---> Specific DoB data
+
+select * from second WHERE dob > "2000-01-01" and Gender ="Female"; ---> Can put multiple conditions at a time
