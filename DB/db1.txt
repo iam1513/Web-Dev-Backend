@@ -1,0 +1,29 @@
+SHOW DATABASES;
+
+mysql -u root -p ---> To enter root mysql
+
+USE <database_name>; ---> To use a particular database
+
+CREATE DATABASE <database_name>; ---> To create a database
+
+CREATE TABLE <database_name>(
+    <column name 1> [datatype] <keyword>,
+    <column name 2> [datatype],
+    ...
+    ...
+    ...
+);
+
+SHOW TABLES; ---> To view all the tables in the database
+
+DESC <table_name>; ---> Description about table
+
+INSERT INTO <table_name> (col1,col2, .....) VALUES(val1,va2,.....);
+
+SELECT <column_name>; FROM <database_name> ---> Will give us particular column and its value 
+
+SELECT * FROM <database_name>; ---> Will give us all columns and their resp values 
+
+CREATE TABLE second (NAME VARCHAR(15) NOT NULL ,DoB DATE DEFAULT "2000-01-01", Gender ENUM("Male" , "Female" ,"Other")); ---> More advanced creation of TABLE 
+
+ INSERT INTO SECOND(Name,DoB,Gender) VALUES("Rahul","2003-02-18","Male"),("Prachi","2006-11-16","Female"),("Max",DEFAULT,"Other"); ---> To insert Multiple at a time
