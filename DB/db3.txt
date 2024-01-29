@@ -1,0 +1,67 @@
+Joins : We can join multiple tables to get relevant data
+
+* Self , right, left, inner ---> Five types of Joins ---> Check Venn diagrams about this on net
+
+"Seclect * from <table1> inner join <table2> on {condition to join...}
+
+table 1 : select * from second;
++--------+------------+--------+------+--------+
+| NAME   | DoB        | Gender | id   | Salary |
++--------+------------+--------+------+--------+
+| Ashish | 2000-01-01 | Male   |    1 | 100000 |
+| Prachi | 2006-11-16 | Female |    2 | 110000 |
+| Riya   | 2004-03-09 | Female |    3 | 120000 |
+| Sanket | 2001-04-19 | Male   |    4 | 130000 |
++--------+------------+--------+------+--------+
+
+table 2 : select * from third;
++-------+--------+------+--------+-------------------+----------+-------+---------------+
+| em_no | name   | Age  | Salary | occupation        | LastName | score | MarriedStatus |
++-------+--------+------+--------+-------------------+----------+-------+---------------+
+|     1 | Om     |   19 | 100000 | Developer         | Shelke   |    70 | Single        |
+|     2 | Prachi |   17 | 110000 | Developer         | Jaybhaye |    70 | Single        |
+|     3 | Akash  |   18 | 180000 | Developer         | Sharma   |    60 | Married       |
+|     4 | Aditya |   19 | 200000 | Software Engineer | Wagh     |    80 | Single        |
++-------+--------+------+--------+-------------------+----------+-------+---------------+
+
+-----> INNER JOIN <-----
+select * from second inner join third on second.salary = third.salary;
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+| NAME   | DoB        | Gender | id   | Salary | em_no | name   | Age  | Salary | occupation | LastName | score | MarriedStatus |
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+| Ashish | 2000-01-01 | Male   |    1 | 100000 |     1 | Om     |   19 | 100000 | Developer  | Shelke   |    70 | Single        |
+| Prachi | 2006-11-16 | Female |    2 | 110000 |     2 | Prachi |   17 | 110000 | Developer  | Jaybhaye |    70 | Single        |
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+
+---> As we selected on the basis of equal salries, we only got those where we have salaries equal.
+
+-----> RIGHT JOIN <-----
+
+select * from second right join third on second.salary = third.salary;
++--------+------------+--------+------+--------+-------+--------+------+--------+-------------------+----------+-------+---------------+
+| NAME   | DoB        | Gender | id   | Salary | em_no | name   | Age  | Salary | occupation        | LastName | score | MarriedStatus |
++--------+------------+--------+------+--------+-------+--------+------+--------+-------------------+----------+-------+---------------+
+| Ashish | 2000-01-01 | Male   |    1 | 100000 |     1 | Om     |   19 | 100000 | Developer         | Shelke   |    70 | Single        |
+| Prachi | 2006-11-16 | Female |    2 | 110000 |     2 | Prachi |   17 | 110000 | Developer         | Jaybhaye |    70 | Single        |
+| NULL   | NULL       | NULL   | NULL |   NULL |     3 | Akash  |   18 | 180000 | Developer         | Sharma   |    60 | Married       |
+| NULL   | NULL       | NULL   | NULL |   NULL |     4 | Aditya |   19 | 200000 | Software Engineer | Wagh     |    80 | Single        |
++--------+------------+--------+------+--------+-------+--------+------+--------+-------------------+----------+-------+---------------+
+
+---> Here we got every value from right table that is Table 2 and only those common we salary condition we set
+Remaining rows will become NULL.
+
+-----> Left JOIN <-----
+
+select * from second left join third on second.salary = third.salary;
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+| NAME   | DoB        | Gender | id   | Salary | em_no | name   | Age  | Salary | occupation | LastName | score | MarriedStatus |
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+| Ashish | 2000-01-01 | Male   |    1 | 100000 |     1 | Om     |   19 | 100000 | Developer  | Shelke   |    70 | Single        |
+| Prachi | 2006-11-16 | Female |    2 | 110000 |     2 | Prachi |   17 | 110000 | Developer  | Jaybhaye |    70 | Single        |
+| Riya   | 2004-03-09 | Female |    3 | 120000 |  NULL | NULL   | NULL |   NULL | NULL       | NULL     |  NULL | NULL          |
+| Sanket | 2001-04-19 | Male   |    4 | 130000 |  NULL | NULL   | NULL |   NULL | NULL       | NULL     |  NULL | NULL          |
++--------+------------+--------+------+--------+-------+--------+------+--------+------------+----------+-------+---------------+
+
+>>> We can not do OUTER JOINT in mysql
+
+>>> Learn some more queries from Net.
