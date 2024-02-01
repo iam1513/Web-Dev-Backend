@@ -1,0 +1,62 @@
+NORMALISATION
+---> Help us to characterize level of redendancies and will provide us mechanisms to to reduce all those redundancies
+
+
+===============  GATE SMASHERS ==============
+---> Multiple Normal forms : 1NF 2NF 3NF BCNF 4NF 5NF
+
+1NF --- FIRST NORMAL FORMS ---
+===> Any attribute must only contain atomic values (invdivisible values)
+     OR we acn say Table should not contain any multivalued attribute.
+
+EX : 
+R_NO       NAME         COURSE
+1          Ashish       C/C++            ===> Multiple values 
+2          Om           Java             ===> Single value
+3          Raj          JS/CSS           ===> Multiple values
+
+=====> SOLUTION :
+
+REP 1 : 
+
+R_NO       NAME         COURSE
+1          Ashish       C
+1          Ashish       C++           
+2          Om           Java            
+3          Raj          JS  
+3          Raj          CSS 
+
+We can do this
+
+* Primary Key : course and r_no combined
+
+REP 2:
+
+R_NO       NAME         COURSE1     COURSE2
+1          Ashish       C           C++
+2          Om           Java        NULL
+3          Raj          JS          CSS    
+
+* Primary Key : r_no combined
+
+But problem faced can be if say a student registered in 100 courses and others only in 10-20, then we will have so many NULL values
+
+REP 3 :
+
+Will divide into 2 different tables
+
+R_NO       NAME             R_NO       COURSE  
+1          Ashish           1          C
+2          Om               1          C++
+3          Raj              2          Java
+                            3          JS
+ BASE TABLE                 3          CSS
+
+                                REFRENCE TABLE
+
+PRIMARY KEY : R_NO          PRIMARY KEY : R_NO & COURSE
+                            FOREIGN KEY : R_NO ---> Will take references from Base Table
+
+==========================================================================================================================================================
+
+2NF : SECOND NORMAL FROM
